@@ -1,0 +1,24 @@
+package piscine
+import "fmt"
+func QuadD(x, y int) {
+	for rows := 1; rows <= y; rows++ {
+		for columns := 1; columns <= x; columns++ {
+			if rows == 1 || rows == y {
+				if columns == 1 {
+					fmt.Print("A")
+				} else if columns == x {
+					fmt.Print("C")
+				} else {
+					fmt.Print("B")
+				}
+			} else {
+				if columns == 1 || columns == x {
+					fmt.Print("B")
+				} else {
+					fmt.Print(" ")
+				}
+			}
+		}
+		fmt.Println()
+	}
+}

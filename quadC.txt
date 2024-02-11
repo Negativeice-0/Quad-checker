@@ -1,0 +1,35 @@
+package main
+import "fmt"
+func QuadC(x, y int) {
+	if x <= 0 || y <= 0 {
+		return
+	}
+	for row := 1; row <= y; row++ {
+		for column := 1; column <= x; column++ {
+			if row == 1 {
+				if column == 1 {
+					fmt.Print("A")
+				} else if column == x {
+					fmt.Print("A")
+				} else {
+					fmt.Print("B")
+				}
+			} else if row == y {
+				if column == 1 {
+					fmt.Print("C")
+				} else if column == x {
+					fmt.Print("C")
+				} else {
+					fmt.Print("B")
+				}
+			} else {
+				if column == 1 || column == x {
+					fmt.Print("B")
+				} else {
+					fmt.Print(" ")
+				}
+			}
+		}
+		fmt.Println()
+	}
+}

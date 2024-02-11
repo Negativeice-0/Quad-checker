@@ -1,0 +1,47 @@
+package main
+
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
+
+func QuadE(x, y int) {
+	if x < 1 || y < 1 {
+		fmt.Println()
+		return
+	}
+	fmt.Print("A")
+	for row := 0; row < x-2; row++ {
+		fmt.Print("B")
+	}
+	fmt.Println("C")
+	for row := 0; row < y-2; row++ {
+		fmt.Print("B")
+		for column := 0; column < x-2; column++ {
+			fmt.Print(" ")
+		}
+		fmt.Println("B")
+	}
+	fmt.Print("C")
+	for row := 0; row < x-2; row++ {
+		fmt.Print("B")
+	}
+	fmt.Println("A")
+}
+
+func main() {
+	if len(os.Args) != 3 {
+		fmt.Println("Error")
+		return
+	}
+
+	x, errX := strconv.Atoi(os.Args[1])
+	y, errY := strconv.Atoi(os.Args[2])
+
+	if errX != nil || errY != nil {
+		fmt.Println("Invalid input")
+		return
+	}
+	QuadE(x, y)
+}

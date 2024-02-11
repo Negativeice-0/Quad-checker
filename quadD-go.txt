@@ -1,0 +1,46 @@
+package main
+
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
+
+func QuadD(x, y int) {
+	for rows := 1; rows <= y; rows++ {
+		for columns := 1; columns <= x; columns++ {
+			if rows == 1 || rows == y {
+				if columns == 1 {
+					fmt.Print("A")
+				} else if columns == x {
+					fmt.Print("C")
+				} else {
+					fmt.Print("B")
+				}
+			} else {
+				if columns == 1 || columns == x {
+					fmt.Print("B")
+				} else {
+					fmt.Print(" ")
+				}
+			}
+		}
+		fmt.Println()
+	}
+}
+
+func main() {
+	if len(os.Args) != 3 {
+		fmt.Println("Error")
+		return
+	}
+
+	x, errX := strconv.Atoi(os.Args[1])
+	y, errY := strconv.Atoi(os.Args[2])
+
+	if errX != nil || errY != nil {
+		fmt.Println("Invalid input")
+		return
+	}
+	QuadD(x, y)
+}

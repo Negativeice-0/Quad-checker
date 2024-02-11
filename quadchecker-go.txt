@@ -1,0 +1,49 @@
+after building by pressing: go build quadchecker.go this file became redundant.
+package main
+
+import (
+	"fmt"
+	"os"
+	"sort"
+	"strings"
+)
+
+var quads = map[string]string{
+	"quadA": "A",
+	"quadB": "B",
+	"quadC": "C",
+	"quadD": "D",
+	"quadE": "E",
+}
+
+func main() {
+	if len(os.Args) != 2 {
+		fmt.Println("Not a quad function")
+		return
+	}
+
+	input := os.Args[1]
+	matchingQuads := findMatchingQuads(input)
+
+	if len(matchingQuads) == 0 {
+		fmt.Println("Not a quad function")
+		return
+	}
+
+	sort.Strings(matchingQuads)
+	fmt.Println(strings.Join(matchingQuads, " || "))
+}
+
+func findMatchingQuads(input string) []string {
+	var matching []string
+	for quad, dimensions := range quads {
+		if isMatchingQuad(input, dimensions) {
+			matching = append(matching, quad)
+		}
+	}
+	return matching
+}
+
+func isMatchingQuad(input, dimensions string) bool {
+	return strings.HasPrefix(input, dimensions)
+}
